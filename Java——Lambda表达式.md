@@ -42,7 +42,7 @@ public class Main {
 ```
 interface StringFunction {
   String run(String str);
-} } } }
+}
 
 public class Main {
   public static void main(String[] args) {
@@ -54,4 +54,6 @@ public class Main {
   public static void printFormatted(String str, StringFunction format) {
     String result = format.run(str);
     System.out.println(result);
+  }
+}
 ```
