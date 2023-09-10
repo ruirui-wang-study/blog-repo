@@ -1,11 +1,15 @@
 ## LRU算法
-- 介绍
+### 介绍
+
 LRU（Least Recently Used）最少最近使用算法，基本思想：当缓存空间已满时，优先淘汰最近最少使用的缓存数据，以腾出更多的缓存空间。
-- 实现
-  使用一个双向链表和一个哈希表。双向链表用于维护缓存数据的访问顺序，哈希表用于快速查找缓存数据。具体来说，当新的数据被访问时，先在哈希表中查找该数据是否已经存在于缓存中，如果存在，则将该数据移动到双向链表的头部，表示该数据是最近访问的数据；如果不存在，则需要将该数据添加到缓存中，并将其添加到双向链表的头部。当缓存空间已满时，需要淘汰双向链表中最后一个节点，同时在哈希表中删除对应的缓存数据。
+### 实现
+
+使用一个双向链表和一个哈希表。双向链表用于维护缓存数据的访问顺序，哈希表用于快速查找缓存数据。具体来说，当新的数据被访问时，先在哈希表中查找该数据是否已经存在于缓存中，如果存在，则将该数据移动到双向链表的头部，表示该数据是最近访问的数据；如果不存在，则需要将该数据添加到缓存中，并将其添加到双向链表的头部。当缓存空间已满时，需要淘汰双向链表中最后一个节点，同时在哈希表中删除对应的缓存数据。
 - 代码
-结构定义
-  双向链表
+
+- 结构定义
+
+- 双向链表
 ```
   class Node<K, V> {
     K key;
@@ -17,7 +21,7 @@ LRU（Least Recently Used）最少最近使用算法，基本思想：当缓存�
         this.value = value;
     }}
 ```
-LRU缓存类
+- LRU缓存类
 ```
   public class LRUCache<K, V> {
     private int capacity;  // 缓存容量
@@ -94,4 +98,40 @@ LRU缓存类
     }                                                
   }
 ```
-LRU算法实现
+- LRU算法实现
+```
+  public class LRUTest {
+    public static void main(String[] args) {
+        LRUCache<Integer, String> cache = new LRUCache<>(3);
+        cache.put(1, "a");
+        cache.put(2, "b");
+        cache.put(3, "c");
+        System.out.println(cache.get(1)); // 输出a
+        cache.put(4, "d");
+        System.out.println(cache.get(2)); // 输出null
+        System.out.println(cache.get(1)); // 输出a
+        cache.put(5, "e");
+        cache.clear();
+        System.out.println(cache.size()); // 输出0
+    }}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
